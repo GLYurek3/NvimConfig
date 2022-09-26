@@ -134,6 +134,11 @@ _G.packer_plugins = {
     path = "/home/jy/.local/share/nvim/site/pack/packer/start/nerdtree-visual-selection",
     url = "https://github.com/PhilRunninger/nerdtree-visual-selection"
   },
+  ["nvim-neoclip.lua"] = {
+    loaded = true,
+    path = "/home/jy/.local/share/nvim/site/pack/packer/start/nvim-neoclip.lua",
+    url = "https://github.com/AckslD/nvim-neoclip.lua"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/jy/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -159,10 +164,20 @@ _G.packer_plugins = {
     path = "/home/jy/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
     url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
   },
+  ["telescope-glyph.nvim"] = {
+    loaded = true,
+    path = "/home/jy/.local/share/nvim/site/pack/packer/start/telescope-glyph.nvim",
+    url = "https://github.com/ghassan0/telescope-glyph.nvim"
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/jy/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["toggleterm.nvim"] = {
+    loaded = true,
+    path = "/home/jy/.local/share/nvim/site/pack/packer/start/toggleterm.nvim",
+    url = "https://github.com/akinsho/toggleterm.nvim"
   },
   ["vim-airline"] = {
     loaded = true,

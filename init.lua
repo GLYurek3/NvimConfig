@@ -82,10 +82,14 @@ cmd [[packadd packer.nvim]]
     use { 'nvim-treesitter/nvim-treesitter',
             run = ':TSUpdate', } --                          <- EVEN MORE SYNTAX HIGHLIGHTING
     use { 'tpope/vim-commentary'} --                         <- THis just tells that I am too lazy to comment something out the old fashion way
-    use { 'lewis6991/impatient.nvim',} --                    <- Wake up Mr. Torvalds, We have a city to Code    } --                        
+	use { 'lewis6991/impatient.nvim',} --                    <- Wake up Mr. :"Torvalds, We have a city to Code    } --                        
 	use { 'dstein64/vim-startuptime' } --					 <- See what slowed NeoVim down
-	use {"akinsho/toggleterm.nvim", tag = '*'}
+	use { 'akinsho/toggleterm.nvim', 
+			tag = '*'}
 	use { 'ghassan0/telescope-glyph.nvim' } --				 <- this is so cool
+	use { 'AckslD/nvim-neoclip.lua',
+	requires = 'nvim-telescope/telescope.nvim'
+}
 
 -- diable redundant or unnecessary builtin plugins`
 local disabled_built_ins = {
@@ -195,23 +199,24 @@ vim.cmd([[autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists
 -- to see how this was done, if anyone is looking over this config, I hope you
 -- can make sense of it.
 
-map("n",    "<Space>",      "<leader>",                     {noremap = false})
-map("n",    "<leader>t",    ":Telescope<CR>",               {noremap = true})
-map("n",    "<leader>f",    ":Telescope file_browser<CR>",  {noremap = true})
-map("n",    "<leader>b", 	":Telescope keymaps<CR>",		{noremap = true})
-map("n",    "<leader>c",    ":Telescope commands",			{noremap = true})
-map("n", 	"<leader>g", 	":Telescope glyph<CR>",         {noremap = true})
-map("n",    "<C-n>",        ":NERDTree<CR>",                {noremap = true})
-map("n",    "<leader>n",    ":NERDTreeFocus<CR>",           {noremap = true})
-map("n",    "<C-t>",        ":NERDTreeToggle<CR>",          {noremap = true})
-map("n",    "<C-f>",        ":NERDTreeFind<CR>",            {noremap = true})
-map("n",    "<C-w>N",       ":tabNext<CR>",                 {noremap = true})
-map("n",    "<C-w>P",       ":tabprevious<CR>",             {noremap = true})
-map("n",    "ZA",           ":qa!<CR>",                     {noremap = true})
-map("n",    "<leader>s",    ":w<CR>",						{noremap = true})
-map("t",    "<Esc>",        "<C-\\><C-n><C-w><C-p>",        {noremap = true})
-map("n", 	"<leader>i",	":tab h ",   					{noremap = true})
-map("n",	"<leader>m", 	":tab h<CR>",					{noremap = true})
+map("n",    "<Space>",      "<leader>",                     		{noremap = false})
+map("n",    "<leader>t",    ":Telescope<CR>",               		{noremap = true})
+map("n",    "<leader>f",    ":Telescope file_browser<CR>",  		{noremap = true})
+map("n",    "<leader>b", 	":Telescope keymaps<CR>",				{noremap = true})
+map("n",    "<leader>c",    ":Telescope commands",					{noremap = true})
+map("n", 	"<leader>g", 	":Telescope glyph<CR>",         		{noremap = true})
+map("n",    "<C-n>",        ":NERDTree<CR>",                		{noremap = true})
+map("n",    "<leader>n",    ":NERDTreeFocus<CR>",           		{noremap = true})
+map("n",    "<C-t>",        ":NERDTreeToggle<CR>",          		{noremap = true})
+map("n",    "<C-f>",        ":NERDTreeFind<CR>",            		{noremap = true})
+map("n",    "<C-w>N",       ":tabNext<CR>",                 		{noremap = true})
+map("n",    "<C-w>P",       ":tabprevious<CR>",             		{noremap = true})
+map("n",    "ZA",           ":qa!<CR>",                     		{noremap = true})
+map("n",    "<leader>s",    ":w<CR>",								{noremap = true})
+map("t",    "<Esc>",        "<C-\\><C-n><C-w><C-p>",        		{noremap = true})
+map("n", 	"<leader>i",	":tab h ",   							{noremap = true})
+map("n",	"<leader>m", 	":tab h<CR>",							{noremap = true})
+map("n",    "<leader>e",    ":source ~/.config/nvim/init.lua<CR>",	{noremap = true})
 --}}}
 
 -- Startify Settings (lua){{{
@@ -700,7 +705,7 @@ require("diffview").setup({
 })
 --}}}
 
--- Toggle Term config(lua) {{{
+-- Toggle Term config(lua){{{
  require("toggleterm").setup {
 	 size = 18,
   -- size can be a number or function which is passed the current terminal
@@ -767,3 +772,52 @@ require("diffview").setup({
  }
 
 	-- }}}
+-- Neoclip settings (lua){{{
+require('neoclip').setup{
+      history = 1000,
+      enable_persistent_history = false,
+      length_limit = 1048576,
+      continuous_sync = false,
+      db_path = vim.fn.stdpath("data") .. "/databases/neoclip.sqlite3",
+      filter = nil,
+      preview = true,
+      default_register = '"',
+      default_register_macros = 'q',
+      enable_macro_history = true,
+      content_spec_column = false,
+      on_paste = {
+        set_reg = false,
+      },
+      on_replay = {
+        set_reg = false,
+      },
+      keys = {
+        telescope = {
+          i = {
+            select = '<cr>',
+            paste = '<c-p>',
+            paste_behind = '<c-k>',
+            replay = '<c-q>',  -- replay a macro
+            delete = '<c-d>',  -- delete an entry
+            custom = {},
+          },
+          n = {
+            select = '<cr>',
+            paste = 'p',
+            --- It is possible to map to more than one key.
+            -- paste = { 'p', '<c-p>' },
+            paste_behind = 'P',
+            replay = 'q',
+            delete = 'd',
+            custom = {},
+          },
+        },
+        fzf = {
+          select = 'default',
+          paste = 'ctrl-p',
+          paste_behind = 'ctrl-k',
+          custom = {},
+        },
+      },
+    }
+-- }}}
