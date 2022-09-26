@@ -87,9 +87,6 @@ cmd [[packadd packer.nvim]]
 	use { 'akinsho/toggleterm.nvim', 
 			tag = '*'}
 	use { 'ghassan0/telescope-glyph.nvim' } --				 <- this is so cool
-	use { 'AckslD/nvim-neoclip.lua',
-	requires = 'nvim-telescope/telescope.nvim'
-}
 
 -- diable redundant or unnecessary builtin plugins`
 local disabled_built_ins = {
@@ -772,52 +769,3 @@ require("diffview").setup({
  }
 
 	-- }}}
--- Neoclip settings (lua){{{
-require('neoclip').setup{
-      history = 1000,
-      enable_persistent_history = false,
-      length_limit = 1048576,
-      continuous_sync = false,
-      db_path = vim.fn.stdpath("data") .. "/databases/neoclip.sqlite3",
-      filter = nil,
-      preview = true,
-      default_register = '"',
-      default_register_macros = 'q',
-      enable_macro_history = true,
-      content_spec_column = false,
-      on_paste = {
-        set_reg = false,
-      },
-      on_replay = {
-        set_reg = false,
-      },
-      keys = {
-        telescope = {
-          i = {
-            select = '<cr>',
-            paste = '<c-p>',
-            paste_behind = '<c-k>',
-            replay = '<c-q>',  -- replay a macro
-            delete = '<c-d>',  -- delete an entry
-            custom = {},
-          },
-          n = {
-            select = '<cr>',
-            paste = 'p',
-            --- It is possible to map to more than one key.
-            -- paste = { 'p', '<c-p>' },
-            paste_behind = 'P',
-            replay = 'q',
-            delete = 'd',
-            custom = {},
-          },
-        },
-        fzf = {
-          select = 'default',
-          paste = 'ctrl-p',
-          paste_behind = 'ctrl-k',
-          custom = {},
-        },
-      },
-    }
--- }}}
