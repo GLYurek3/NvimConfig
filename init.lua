@@ -183,7 +183,7 @@ vim.cmd("syntax on")
 vim.cmd('autocmd VimEnter * :Startify')
 vim.cmd('autocmd VimEnter * :ToggleTerm')
 vim.cmd('autocmd VimEnter * :wincmd p')
-vim.cmd('autocmd VimEnter * :NERDTree')
+vim.cmd('autocmd VimEnter * :NERDTree | wincmd p')
 
  -- Exit Vim if NERDTree is the only window left.
 vim.cmd([[autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
@@ -199,6 +199,8 @@ map("n",    "<Space>",      "<leader>",                     {noremap = false})
 map("n",    "<leader>t",    ":Telescope<CR>",               {noremap = true})
 map("n",    "<leader>f",    ":Telescope file_browser<CR>",  {noremap = true})
 map("n",    "<leader>b", 	":Telescope keymaps<CR>",		{noremap = true})
+map("n",    "<leader>c",    ":Telescope commands",			{noremap = true})
+map("n", 	"<leader>g", 	":Telescope glyph<CR>",         {noremap = true})
 map("n",    "<C-n>",        ":NERDTree<CR>",                {noremap = true})
 map("n",    "<leader>n",    ":NERDTreeFocus<CR>",           {noremap = true})
 map("n",    "<C-t>",        ":NERDTreeToggle<CR>",          {noremap = true})
@@ -210,7 +212,6 @@ map("n",    "<leader>s",    ":w<CR>",						{noremap = true})
 map("t",    "<Esc>",        "<C-\\><C-n><C-w><C-p>",        {noremap = true})
 map("n", 	"<leader>i",	":tab h ",   					{noremap = true})
 map("n",	"<leader>m", 	":tab h<CR>",					{noremap = true})
-map("n",    "<leader>c",    ":Telescope commands",			{noremap = true})
 --}}}
 
 -- Startify Settings (lua){{{
