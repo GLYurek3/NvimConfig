@@ -203,7 +203,7 @@ map("n",    "<leader>b", 	":Telescope keymaps<CR>",				{noremap = true})
 map("n",    "<leader>c",    ":Telescope commands",					{noremap = true})
 map("n", 	"<leader>g", 	":Telescope glyph<CR>",         		{noremap = true})
 map("n",    "<C-n>",        ":NERDTree<CR>",                		{noremap = true})
-map("n",    "<leader>n",    ":NERDTreeFocus<CR>",           		{noremap = true})
+map("n",    "<leader>nt",    ":NERDTreeFocus<CR>",           		{noremap = true})
 map("n",    "<C-t>",        ":NERDTreeToggle<CR>",          		{noremap = true})
 map("n",    "<C-f>",        ":NERDTreeFind<CR>",            		{noremap = true})
 map("n",    "<C-w>N",       ":tabNext<CR>",                 		{noremap = true})
@@ -214,6 +214,7 @@ map("t",    "<Esc>",        "<C-\\><C-n><C-w><C-p>",        		{noremap = true})
 map("n", 	"<leader>i",	":tab h ",   							{noremap = true})
 map("n",	"<leader>m", 	":tab h<CR>",							{noremap = true})
 map("n",    "<leader>e",    ":source ~/.config/nvim/init.lua<CR>",	{noremap = true})
+map("n", 	"<leader>ng", 	":Neogit<CR>",						 	{noremap = true})
 --}}}
 
 -- Startify Settings (lua){{{
@@ -345,7 +346,7 @@ g.startify_custom_header = {
 -- Nvim-TreeSitter Config (lua){{{
 require'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "c", "cpp", "lua", "rust", "fish", "make", "latex", "vim" },
+  ensure_installed = { "c", "cpp", "lua", "rust", "fish", "make", "latex"},
 
   -- ensure_installed = { "c", "cpp", "lua", "rust", "fish", "bash", "html", "make", "css", "latex", "vim", },
   -- Install parsers synchronously (only applied to `ensure_installed`)
